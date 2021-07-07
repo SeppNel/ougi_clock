@@ -32,7 +32,7 @@
 			var rectL = red.getBoundingClientRect();
 			var rectO = ougi.getBoundingClientRect();
 
-			if (seconds < 180){
+			if (deg_seconds < 180){
 				difX = (rectL.right - rectO.right) + difX + ougi.width * 0.55;
 
 			}
@@ -40,7 +40,7 @@
 				difX = (rectL.left - rectO.left) + difX;
 			}
 
-			if (seconds < 90 || seconds > 270){
+			if (deg_seconds < 90 || deg_seconds > 270){
 				difY = rectL.top - rectO.top + difY;
 			}
 			else{
