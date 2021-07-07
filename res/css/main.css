@@ -1,0 +1,70 @@
+body{
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+	background-image: url('../img/back.jpg');
+	background-size: cover;
+}
+
+#container{
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+#clock{
+	display: inline;
+	margin: auto;
+	transform: translateX(-50px);
+}
+
+#clock img{
+	position: relative;
+	height: 19em;
+}
+
+#long{
+	left: 37.1em;
+	bottom: 25.8em;
+	transform-origin: bottom;
+	z-index: 97;
+}
+
+#red{
+	left: 35.3em;
+	bottom: 25.8em;
+	transform-origin: bottom;
+	z-index: 96;
+}
+
+#short{
+	left: 33.5em;
+	bottom: 25.8em;
+	transform-origin: bottom;
+	z-index: 98;
+}
+#ougi{
+	left: 31em;
+	bottom: 25.8em;
+	transform-origin: bottom;
+	height: 19em;
+	z-index: 99;
+}
+
+#frame{
+	width: 52.8em;
+	height: auto !important;
+}
+
+@media only screen and (max-width: 1200px) {
+	body{
+		font-size: 0.7em;
+	}
+}
+
+
+@media only screen and (max-width: 768px) {
+	body{
+		font-size: 0.3em;
+	}
+}

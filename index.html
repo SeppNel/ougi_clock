@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ougi Clock</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="res/css/main.css">
+	<script>
+		var difX = 0;
+		var difY = 0;
+
+		function set_clock(){
+			var time = new Date();
+			var hours = time.getHours();
+			var minutes = time.getMinutes();
+			var seconds = time.getSeconds();
+
+			seconds = (360 / 100) * ((seconds / 60) * 100);
+			minutes = (360 / 100) * ((minutes / 60) * 100);
+			hours = (360 / 100) * ((hours / 12) * 100);
+
+			var long = document.getElementById("long");
+			long.style = "transform: rotate("+minutes+"deg)";
+
+			var short = document.getElementById("short");
+			short.style = "transform: rotate("+hours+"deg)";
+
+			var red = document.getElementById("red");
+			red.style = "transform: rotate("+seconds+"deg)";
+
+			var ougi = document.getElementById("ougi");
+
+			var rectL = red.getBoundingClientRect();
+			var rectO = ougi.getBoundingClientRect();
+
+			if (seconds < 180){
+				difX = (rectL.right - rectO.right) + difX + ougi.width * 0.55;
+
+			}
+			else{
+				difX = (rectL.left - rectO.left) + difX;
+			}
+
+			if (seconds < 90 || seconds > 270){
+				difY = rectL.top - rectO.top + difY;
+			}
+			else{
+				difY = rectL.bottom - rectO.bottom + ougi.height * 0.9 + difY;
+			}
+
+			ougi.style = "transform: translateX("+ difX + "px) translateY("+ difY + "px)";
+		}
+	</script>
+</head>
+<body>
+<div id="container">
+	<div id="clock">
+		<img id="long" src="res/img/long.png">
+		<img id="red" src="res/img/red.png">
+		<img id="short" src="res/img/short.png">
+		<img id="ougi" src="res/img/ougi.png">
+		<img id="frame" src="res/img/clock.png">
+	</div>
+</div>
+</body>
+<script>
+	setTimeout(set_clock, 0);
+
+	//set_clock();
+	const interval = setInterval(set_clock, 1000);
+</script>
+</html>
