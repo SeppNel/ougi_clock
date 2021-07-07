@@ -63,8 +63,8 @@
 </div>
 </body>
 <script>
-	setTimeout(set_clock, 0);
-
+	window.onload = set_clock;
+	//setTimeout(set_clock, 0);
 	//set_clock();
 	const interval = setInterval(set_clock, 1000);
 </script>
