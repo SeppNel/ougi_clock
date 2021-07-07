@@ -7,6 +7,7 @@
 	<script>
 		var difX = 0;
 		var difY = 0;
+		var is_mirror = false;
 
 		function set_clock(){
 			var time = new Date();
@@ -32,12 +33,21 @@
 			var rectL = red.getBoundingClientRect();
 			var rectO = ougi.getBoundingClientRect();
 
-			if (deg_seconds < 180){
-				difX = (rectL.right - rectO.right) + difX + ougi.width * 0.55;
-
+			if (is_mirror){
+				if (deg_seconds > 180){
+					difX = (rectO.right - rectL.right) + difX;
+				}
+				else{
+					difX = (rectO.left - rectL.left) + difX + ougi.width * 0.55;
+				}
 			}
 			else{
-				difX = (rectL.left - rectO.left) + difX;
+				if (deg_seconds < 180){
+					difX = (rectL.right - rectO.right) + difX + ougi.width * 0.55;
+				}
+				else{
+					difX = (rectL.left - rectO.left) + difX;
+				}
 			}
 
 			if (deg_seconds < 90 || deg_seconds > 270){
@@ -48,6 +58,18 @@
 			}
 
 			ougi.style = "transform: translateX("+ difX + "px) translateY("+ difY + "px)";
+		}
+
+		function mirror(){
+			if (is_mirror) {
+				document.getElementById("clock").style = "transform: translateX(-5.75em);";
+				is_mirror = false;
+			}
+			else{
+				document.getElementById("clock").style = "transform: scaleX(-1) translateX(-5.75em);";
+				is_mirror = true;
+			}
+			
 		}
 	</script>
 </head>
@@ -60,6 +82,7 @@
 		<img id="ougi" src="res/img/ougi.png">
 		<img id="frame" src="res/img/clock.png">
 	</div>
+	<button onclick="mirror()" style="z-index: 99999">Mirror</button>
 </div>
 </body>
 <script>

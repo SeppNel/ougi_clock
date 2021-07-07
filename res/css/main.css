@@ -15,7 +15,7 @@ body{
 #clock{
 	display: inline;
 	margin: auto;
-	transform: translateX(-50px);
+	transform: translateX(-5.75em);
 }
 
 #clock img{
