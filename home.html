@@ -14,18 +14,18 @@
 			var minutes = time.getMinutes();
 			var seconds = time.getSeconds();
 
-			seconds = (360 / 100) * ((seconds / 60) * 100);
-			minutes = (360 / 100) * ((minutes / 60) * 100);
-			hours = (360 / 100) * ((hours / 12) * 100);
+			var deg_minutes = minutes * 6;
+    		var deg_seconds = seconds * 6;
+			var deg_hours = ((hours % 12) + minutes / 60) * 30;
 
 			var long = document.getElementById("long");
-			long.style = "transform: rotate("+minutes+"deg)";
+			long.style = "transform: rotate("+deg_minutes+"deg)";
 
 			var short = document.getElementById("short");
-			short.style = "transform: rotate("+hours+"deg)";
+			short.style = "transform: rotate("+deg_hours+"deg)";
 
 			var red = document.getElementById("red");
-			red.style = "transform: rotate("+seconds+"deg)";
+			red.style = "transform: rotate("+deg_seconds+"deg)";
 
 			var ougi = document.getElementById("ougi");
 
